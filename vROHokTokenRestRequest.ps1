@@ -40,8 +40,8 @@ $response = $service.Issue($token)
 $responsetoken = $response.RequestSecurityTokenResponse.RequestedSecurityToken
 $responsetokenXML = $responsetoken.OuterXml
 $encodedANDgzippedtoken = ConvertTo-GZipString -String $responsetokenXML
-
-$nl = (0x0A -as [char])
+#I had new line like that before but `n works as well.
+#$nl = (0x0A -as [char]) 
 $restmethod = 'GET'
 $timestamp = [DateTimeOffset]::Now.ToUnixTimeSeconds().ToString()
 $nonce = $timestamp + ':ass234'
